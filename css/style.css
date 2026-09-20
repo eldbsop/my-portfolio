@@ -47,6 +47,11 @@ body {
     margin: 0 auto;
 }
 
+.section h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
 h2::after {
     content: "";
     display: block;
@@ -55,6 +60,7 @@ h2::after {
     background-color: var(--primary-color);
     margin: 10px auto 0;
     border-radius: 2px;
+    position: relative;
 }
 
 .btn {
@@ -85,6 +91,15 @@ h2::after {
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
     transition: background-color var(--transition-speed);
+}
+
+header {
+    transition: background-color 0.3 ease, box-shadow 0.3 ease;
+}
+
+header.scrolled {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -167,12 +182,17 @@ h2::after {
 }
 
 .profile-img {
+    display: block;
+    margin: 0 auto 1.5rem auto;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 0 4px var(--primary-color);
+}
+
+#skills h2::after {
+    display: none;
 }
 
 .skills-list {
@@ -181,14 +201,40 @@ h2::after {
     gap: 15px;
     flex-wrap: wrap;
     list-style: none;
+    padding: 0;
 }
 
 .skills-list li {
+    list-style: none;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 500;
+}
+
+.project-status {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.1rem;
+    color: var(--text-color)
+}
+
+.retry-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.retry-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 #projects-container {
@@ -259,4 +305,53 @@ footer {
     #hero h1 {
         font-size: 3.5rem;
     }
+}
+
+.social-links {
+    margin-top: 8px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
 }
